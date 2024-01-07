@@ -1,6 +1,10 @@
-import Image from "next/image";
-import { Button } from "@nextui-org/button";
+"use client";
 
+import Caraousel from "@/components/Caraousel";
 export default function Home() {
-  return <div>Home</div>;
+  return (
+    <div>
+      <Caraousel />
+    </div>
+  );
 }
