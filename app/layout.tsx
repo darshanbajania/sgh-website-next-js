@@ -4,7 +4,7 @@ import "./globals.css";
 import { Providers } from "./providers";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-
+import { ApolloWrapper } from "@/lib/apollo-wrapper";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -20,13 +20,15 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <Providers>
-          <main className="light text-foreground bg-background">
-            <Navbar />
-            {children}
-            <Footer />
-          </main>
-        </Providers>
+        <ApolloWrapper>
+          <Providers>
+            <main className="light text-foreground bg-background">
+              <Navbar />
+              {children}
+              <Footer />
+            </main>
+          </Providers>
+        </ApolloWrapper>
       </body>
     </html>
   );

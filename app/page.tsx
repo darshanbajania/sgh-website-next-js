@@ -1,5 +1,3 @@
-"use client";
-
 import Caraousel from "@/components/Caraousel";
 import HomeProductCategoryHeader from "@/components/HomeProductCategoryHeader";
 import ProductCard from "@/components/ProductCard";
@@ -12,8 +10,15 @@ import {
   Link,
 } from "@nextui-org/react";
 import { redirect } from "next/navigation";
+import { GET_PRODUCTS } from "@/lib/queries";
+import { getClient } from "@/lib/client";
+const Home = async () => {
+  const client = getClient();
+  const { data, loading, error } = await client.query({
+    query: GET_PRODUCTS,
+  });
+  console.log("🚀 ~ Home ~ data:", data);
 
-export default function Home() {
   return (
     <div>
       <Caraousel />
@@ -21,18 +26,11 @@ export default function Home() {
 
       {/* Cards Row */}
       <div className="flex flex-wrap justify-start gap-4 p-4">
-        <ProductCard
-          onClick={() => {
-            console.log("card clicked");
-            redirect("/login");
-          }}
-        />
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
+        {data?.products_product?.map((item) => {
+          return (
+            <ProductCard key={item.id} label={item.label} price={item?.price} />
+          );
+        })}
       </div>
 
       {/* <div className="flex items-center justify-end p-4">
@@ -75,4 +73,5 @@ export default function Home() {
       </div> */}
     </div>
   );
-}
+};
+export default Home;
