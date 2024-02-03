@@ -91,12 +91,25 @@ export const GET_USER_PROFILE_DETAILS = gql`
   }
 `;
 
-export const GET_PRODUCTS = gql`
-  query GET_PRODUCTS {
+export const GET_HOME_PAGE_BASIC_DATA = gql`
+  query GET_HOME_PAGE_BASIC_DATA {
     products_product {
       id
       label
       price
     }
+    sales_advertisement(where: { advertisementType: { _eq: "home-banner" } }) {
+      id
+      name
+      image
+    }
   }
 `;
+// export const GET_HOME_PAGE_ADVERTISEMENT = gql`
+//   query GET_HOME_PAGE_ADVERTISEMENT {
+//     sales_advertisement(where: { advertisementType: { _eq: "home-banner" } }) {
+//       id
+//       name
+//     }
+//   }
+// `;

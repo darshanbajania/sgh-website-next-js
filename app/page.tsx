@@ -10,26 +10,23 @@ import {
   Link,
 } from "@nextui-org/react";
 import { redirect } from "next/navigation";
-import { GET_PRODUCTS } from "@/lib/queries";
+import { GET_HOME_PAGE_BASIC_DATA } from "@/lib/queries";
 import { getClient } from "@/lib/client";
 const Home = async () => {
   const client = getClient();
   const { data, loading, error } = await client.query({
-    query: GET_PRODUCTS,
+    query: GET_HOME_PAGE_BASIC_DATA,
   });
-  console.log("🚀 ~ Home ~ data:", data);
 
   return (
     <div>
-      <Caraousel />
+      <Caraousel carouselData={data?.sales_advertisement} />
       <HomeProductCategoryHeader />
 
       {/* Cards Row */}
       <div className="flex flex-wrap justify-start gap-4 p-4">
         {data?.products_product?.map((item) => {
-          return (
-            <ProductCard key={item.id} label={item.label} price={item?.price} />
-          );
+          return <ProductCard key={item.id} item={item} />;
         })}
       </div>
 
