@@ -11,6 +11,7 @@ import {
   Button,
   Link,
 } from "@nextui-org/react";
+import { redirect } from "next/navigation";
 
 export default function Home() {
   return (
@@ -20,7 +21,12 @@ export default function Home() {
 
       {/* Cards Row */}
       <div className="flex flex-wrap justify-start gap-4 p-4">
-        <ProductCard />
+        <ProductCard
+          onClick={() => {
+            console.log("card clicked");
+            redirect("/login");
+          }}
+        />
         <ProductCard />
         <ProductCard />
         <ProductCard />

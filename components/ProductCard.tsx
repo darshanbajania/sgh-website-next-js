@@ -1,9 +1,19 @@
+"use client";
 import React from "react";
 import Button from "./Button";
+import { useRouter } from "next/navigation";
 
-const ProductCard = () => {
+const ProductCard = ({ onClick }) => {
+  const router = useRouter();
+
+  const handleOnPress = () => {
+    router.push("/viewProduct");
+  };
   return (
-    <div className="max-w-sm rounded overflow-hidden shadow-lg">
+    <div
+      onClick={handleOnPress}
+      className="max-w-sm rounded overflow-hidden shadow-lg cursor-pointer"
+    >
       <img
         className="w-full h-80 object-cover"
         src="https://psediting.websites.co.in/obaju-turquoise/img/product-placeholder.png"
