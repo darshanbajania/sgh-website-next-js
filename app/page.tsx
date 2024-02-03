@@ -1,6 +1,8 @@
 "use client";
 
 import Caraousel from "@/components/Caraousel";
+import HomeProductCategoryHeader from "@/components/HomeProductCategoryHeader";
+import ProductCard from "@/components/ProductCard";
 import {
   Dropdown,
   DropdownTrigger,
@@ -14,74 +16,17 @@ export default function Home() {
   return (
     <div>
       <Caraousel />
-      <div className="flex items-center justify-end p-4">
-        <div>
-          <Link href="#" underline="always">
-            View All
-          </Link>
-        </div>
-      </div>
+      <HomeProductCategoryHeader />
 
       {/* Cards Row */}
       <div className="flex flex-wrap justify-start gap-4 p-4">
-        {/* Card 1 */}
-        <div className="max-w-sm rounded overflow-hidden shadow-lg">
-          <img
-            className="w-full h-48 object-cover"
-            src="image1.jpg"
-            alt="Card 1"
-          />
-          <div className="p-4">
-            <h3 className="text-xl font-semibold mb-2">Card 1</h3>
-            <p className="text-gray-700">Description for Card 1.</p>
-          </div>
-        </div>
-
-        {/* Card 2 */}
-        <div className="max-w-sm rounded overflow-hidden shadow-lg">
-          <img
-            className="w-full h-48 object-cover"
-            src="image2.jpg"
-            alt="Card 2"
-          />
-          <div className="p-4">
-            <h3 className="text-xl font-semibold mb-2">Card 2</h3>
-            <p className="text-gray-700">Description for Card 2.</p>
-          </div>
-        </div>
-        <div className="max-w-sm rounded overflow-hidden shadow-lg">
-          <img
-            className="w-full h-48 object-cover"
-            src="image2.jpg"
-            alt="Card 2"
-          />
-          <div className="p-4">
-            <h3 className="text-xl font-semibold mb-2">Card 2</h3>
-            <p className="text-gray-700">Description for Card 2.</p>
-          </div>
-        </div>
-        <div className="max-w-sm rounded overflow-hidden shadow-lg">
-          <img
-            className="w-full h-48 object-cover"
-            src="image2.jpg"
-            alt="Card 2"
-          />
-          <div className="p-4">
-            <h3 className="text-xl font-semibold mb-2">Card 2</h3>
-            <p className="text-gray-700">Description for Card 2.</p>
-          </div>
-        </div>
-        <div className="max-w-sm rounded overflow-hidden shadow-lg">
-          <img
-            className="w-full h-48 object-cover"
-            src="image2.jpg"
-            alt="Card 2"
-          />
-          <div className="p-4">
-            <h3 className="text-xl font-semibold mb-2">Card 2</h3>
-            <p className="text-gray-700">Description for Card 2.</p>
-          </div>
-        </div>
+        <ProductCard />
+        <ProductCard />
+        <ProductCard />
+        <ProductCard />
+        <ProductCard />
+        <ProductCard />
+        <ProductCard />
       </div>
 
       {/* <div className="flex items-center justify-end p-4">
