@@ -1,9 +1,13 @@
 import React from "react";
-import { Button as NextUIButton } from "@nextui-org/react";
-const Button = ({ label = "button", variant = "solid" }) => {
+import { ButtonProps, Button as NextUIButton } from "@nextui-org/react";
+const Button = ({
+  children = "button",
+  variant = "solid",
+  ...props
+}: ButtonProps) => {
   return (
-    <NextUIButton color="primary" variant={variant}>
-      {label}
+    <NextUIButton color="primary" variant={variant} {...props}>
+      {children}
     </NextUIButton>
   );
 };

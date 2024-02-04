@@ -3,6 +3,7 @@ import React from "react";
 import { GET_PRODUCT_DETAILS } from "@/lib/queries";
 import { getClient } from "@/lib/client";
 import ProductCarousal from "@/components/productCarousal";
+import QuantityStrip from "@/components/productDetails/QuantityStrip";
 
 const page = async ({ params }) => {
   const client = getClient();
@@ -22,7 +23,7 @@ const page = async ({ params }) => {
 
         {/* Column 2 */}
         <div className="w-full md:w-1/2 p-4">
-          <div className="bg-white p-4 shadow-md rounded-md">
+          <div className="bg-white p-4 ">
             <h1 className="text-3xl">{data?.products_product_by_pk?.label}</h1>
             <p className="text-base text-current">
               {data?.products_product_by_pk?.description}
@@ -30,6 +31,7 @@ const page = async ({ params }) => {
             <p className="text-2xl mt-8">
               ₹{data?.products_product_by_pk?.price}
             </p>
+            <QuantityStrip />
           </div>
         </div>
       </div>
