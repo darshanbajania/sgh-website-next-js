@@ -105,6 +105,22 @@ export const GET_HOME_PAGE_BASIC_DATA = gql`
     }
   }
 `;
+
+export const GET_PRODUCT_DETAILS = gql`
+  query GET_PRODUCT_DETAILS($productId: uuid!) {
+    products_product_by_pk(id: $productId) {
+      id
+      label
+      description
+      price
+      productImages {
+        id
+        image
+      }
+    }
+  }
+`;
+
 // export const GET_HOME_PAGE_ADVERTISEMENT = gql`
 //   query GET_HOME_PAGE_ADVERTISEMENT {
 //     sales_advertisement(where: { advertisementType: { _eq: "home-banner" } }) {
