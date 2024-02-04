@@ -21,15 +21,8 @@ const CounterStrip = ({ onIncrementQuantity, onDecrementQuantity }) => {
       <Button onClick={incrementQuantity} style={{ padding: 0 }} isIconOnly>
         <PlusIcon />
       </Button>
-      <div className="w-10 mx-4">
-        <input
-          className="text-2xl"
-          placeholder="0"
-          type="number"
-          value={quantity}
-          min={0}
-          style={{ width: "100%", height: "100%" }}
-        />
+      <div className="w-10 mx-2">
+        <p className="text-2xl text-center">{quantity}</p>
       </div>
       <Button onClick={decrementQuantity} isIconOnly>
         <MinusIcon />
