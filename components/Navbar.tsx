@@ -11,6 +11,8 @@ import {
   NavbarMenuItem,
   NavbarMenuToggle,
 } from "@nextui-org/react";
+import CartIcon from "@/assets/CartIcon";
+import CartLink from "./cartLink";
 
 const NavbarComponent = () => {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
@@ -27,6 +29,7 @@ const NavbarComponent = () => {
     "Help & Feedback",
     "Log Out",
   ];
+
   return (
     <Navbar onMenuOpenChange={setIsMenuOpen}>
       <NavbarContent>
@@ -52,8 +55,8 @@ const NavbarComponent = () => {
           </Link>
         </NavbarItem>
         <NavbarItem>
-          <Link color="foreground" href="#">
-            Integrations
+          <Link color="foreground" href="/cart">
+            <CartLink />
           </Link>
         </NavbarItem>
       </NavbarContent>

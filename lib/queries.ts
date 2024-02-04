@@ -97,6 +97,10 @@ export const GET_HOME_PAGE_BASIC_DATA = gql`
       id
       label
       price
+      productImages(limit: 1) {
+        id
+        image
+      }
     }
     sales_advertisement(where: { advertisementType: { _eq: "home-banner" } }) {
       id
