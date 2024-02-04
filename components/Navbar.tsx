@@ -12,7 +12,7 @@ import {
   NavbarMenuToggle,
 } from "@nextui-org/react";
 import CartIcon from "@/assets/CartIcon";
-import CartLink from "./cartLink";
+import CartLink from "./CartLink";
 
 const NavbarComponent = () => {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
