@@ -31,7 +31,7 @@ const page = async ({ params }) => {
             <p className="text-2xl mt-8">
               ₹{data?.products_product_by_pk?.price}
             </p>
-            <QuantityStrip />
+            <QuantityStrip itemId={params?.id} />
           </div>
         </div>
       </div>
