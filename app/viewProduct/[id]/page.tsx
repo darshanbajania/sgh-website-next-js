@@ -26,7 +26,7 @@ const page = async ({ params }) => {
           <div className="bg-white p-4 ">
             <h1 className="text-3xl">{data?.products_product_by_pk?.label}</h1>
             <p className="text-base text-current">
-              {data?.products_product_by_pk?.description}
+              {data?.products_product_by_pk?.description || "description"}
             </p>
             <p className="text-2xl mt-8">
               ₹{data?.products_product_by_pk?.price}

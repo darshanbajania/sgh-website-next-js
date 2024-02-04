@@ -3,51 +3,16 @@ import React, { useState } from "react";
 
 import CounterStrip from "../CounterStrip";
 import Button from "../Button";
+import { useCart } from "@/hooks/useCart";
 
 const QuantityStrip = ({ itemId }) => {
   const getCartValue = JSON.parse(sessionStorage.getItem("cart"));
-
+  const { incrementItemCart, cart, decrementItemQuantity } = useCart();
   const onIncrementQuantity = async (quantity) => {
-    const getCurrentCartValue = JSON.parse(sessionStorage.getItem("cart"));
-
-    if (getCurrentCartValue) {
-      if (getCurrentCartValue?.length > 0) {
-        getCurrentCartValue?.map((item) => {
-          if (item?.id === itemId) {
-            item.quantity = item.quantity + 1;
-            return { id: item.id, quantity: item.quantity };
-          } else {
-            return item;
-          }
-        });
-      }
-      sessionStorage.setItem("cart", JSON.stringify(getCurrentCartValue));
-    } else {
-      sessionStorage.setItem(
-        "cart",
-        JSON.stringify([{ id: itemId, quantity: 1 }])
-      );
-    }
+    incrementItemCart({ id: itemId, quantity: quantity });
   };
   const onDecrementQuantity = (quantity) => {
-    const getCurrentCartValue = JSON.parse(sessionStorage.getItem("cart"));
-
-    if (getCurrentCartValue) {
-      if (getCurrentCartValue?.length > 0) {
-        getCurrentCartValue?.map((item) => {
-          if (item?.id === itemId) {
-            item.quantity = item.quantity - 1;
-            return { id: item.id, quantity: item.quantity };
-          } else {
-            return item;
-          }
-        });
-      }
-      sessionStorage.setItem("cart", JSON.stringify(getCurrentCartValue));
-    } else {
-      sessionStorage.removeItem("cart");
-    }
-    console.log("decrement", quantity);
+    decrementItemQuantity({ id: item, quantity: quantity });
   };
   return (
     <>

@@ -11,7 +11,10 @@ const ProductCarousal = ({ productData }) => {
           <div style={{ height: 350 }} className=" bg-gray-100 ">
             <img
               // src="https://www.theindiantoys.com/wp-content/uploads/woocommerce-placeholder.png"
-              src={selectedProduct?.image}
+              src={
+                selectedProduct?.image ||
+                "https://www.theindiantoys.com/wp-content/uploads/woocommerce-placeholder.png"
+              }
               style={{ height: "100%", width: "100%", objectFit: "contain" }}
             />
           </div>
