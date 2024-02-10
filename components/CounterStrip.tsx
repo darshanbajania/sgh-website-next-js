@@ -22,14 +22,19 @@ const CounterStrip = ({
   };
   return (
     <>
-      <div className="flex items-center mt-5">
-        <Button onClick={incrementQuantity} style={{ padding: 0 }} isIconOnly>
+      <div className="flex items-center">
+        <Button
+          size="sm"
+          onClick={incrementQuantity}
+          style={{ padding: 0 }}
+          isIconOnly
+        >
           <PlusIcon />
         </Button>
-        <div className="w-10 mx-2">
-          <p className="text-2xl text-center">{quantity}</p>
+        <div className="w-6 md:w-10 mx-2">
+          <p className="text-xl md:text-2xl text-center">{quantity}</p>
         </div>
-        <Button onClick={decrementQuantity} isIconOnly>
+        <Button size="sm" onClick={decrementQuantity} isIconOnly>
           <MinusIcon />
         </Button>
       </div>
