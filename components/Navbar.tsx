@@ -13,6 +13,8 @@ import {
 } from "@nextui-org/react";
 import CartIcon from "@/assets/CartIcon";
 import CartLink from "./CartLink";
+import AuthSection from "./AuthSection";
+import { SessionProvider } from "next-auth/react";
 
 const NavbarComponent = () => {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
@@ -60,16 +62,9 @@ const NavbarComponent = () => {
           </Link>
         </NavbarItem>
       </NavbarContent>
-      <NavbarContent justify="end">
-        <NavbarItem className="hidden lg:flex">
-          <Link href="#">Login</Link>
-        </NavbarItem>
-        <NavbarItem>
-          <Button as={Link} color="primary" href="#" variant="flat">
-            Sign Up
-          </Button>
-        </NavbarItem>
-      </NavbarContent>
+      <SessionProvider>
+        <AuthSection />
+      </SessionProvider>
       <NavbarMenu>
         {menuItems.map((item, index) => (
           <NavbarMenuItem key={`${item}-${index}`}>
