@@ -1,7 +1,7 @@
 import { create } from "zustand";
 
 export const useCart = create((set) => ({
-  cart: JSON.parse(sessionStorage.getItem("cart")) || [],
+  cart: [],
   increasePopulation: () => set((state) => ({ bears: state.bears + 1 })),
   removeAllBears: () => set({ bears: 0 }),
   incrementCartItem: async (item) => {

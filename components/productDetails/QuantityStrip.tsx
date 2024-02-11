@@ -20,9 +20,11 @@ const QuantityStrip = ({ itemId }) => {
     const session = await getSession();
     updateProductQuantity({
       variables: {
-        itemId: itemId,
-        quantity: quantity,
-        customerId: session?.user?.id,
+        object: {
+          productId: itemId,
+          quantity: quantity,
+          customerId: session?.user?.id,
+        },
       },
       onCompleted: (data) => {
         incrementCartItem({ id: itemId, quantity: quantity });
@@ -34,9 +36,11 @@ const QuantityStrip = ({ itemId }) => {
 
     updateProductQuantity({
       variables: {
-        itemId: itemId,
-        quantity: quantity,
-        customerId: session?.user?.id,
+        object: {
+          productId: itemId,
+          quantity: quantity,
+          customerId: session?.user?.id,
+        },
       },
       onCompleted: (data) => {
         decrementCartItem({ id: itemId, quantity: quantity });

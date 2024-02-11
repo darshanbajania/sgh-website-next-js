@@ -130,6 +130,11 @@ export const GET_CART_DATA = gql`
       id
       quantity
       productId
+      product {
+        label
+        description
+        price
+      }
     }
   }
 `;

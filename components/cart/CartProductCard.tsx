@@ -17,9 +17,9 @@ const CartProductCard = ({ item }) => {
           <p className="text-current text-justify">{item.description}</p>
         </div>
         <div className="flex justify-between items-center mt-5">
-          <p className="text-2xl">₹2000</p>
+          <p className="text-2xl">₹{item.price}</p>
 
-          <CounterStrip defaultValue={5} />
+          <CounterStrip defaultValue={item.quantity} />
         </div>
       </div>
     </div>

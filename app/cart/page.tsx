@@ -37,16 +37,17 @@ const Cart = () => {
                 <TableColumn>Amount (₹)</TableColumn>
               </TableHeader>
               <TableBody>
-                <TableRow key="1">
-                  <TableCell>Tony Reichert asdadadasdadsa</TableCell>
-                  <TableCell>1</TableCell>
-                  <TableCell>100</TableCell>
-                </TableRow>
-                <TableRow key="2">
-                  <TableCell>Zoey Lang</TableCell>
-                  <TableCell>2</TableCell>
-                  <TableCell>150</TableCell>
-                </TableRow>
+                {cart.map((item) => {
+                  return (
+                    <TableRow key={item.id}>
+                      <TableCell>{item.label}</TableCell>
+                      <TableCell>{item.quantity}</TableCell>
+                      <TableCell>
+                        {Number(item.price) * Number(item.quantity)}
+                      </TableCell>
+                    </TableRow>
+                  );
+                })}
                 <TableRow key="3" className="bg-gray-100">
                   <TableCell>Delivery Charge</TableCell>
                   <TableCell colSpan={0}></TableCell>
@@ -55,7 +56,9 @@ const Cart = () => {
                 <TableRow key="4">
                   <TableCell></TableCell>
                   <TableCell colSpan={0}></TableCell>
-                  <TableCell className="text-lg">150</TableCell>
+                  <TableCell className="text-lg">
+                    {cart.reduce((a, b) => a + b.quantity * b.price, 0)}
+                  </TableCell>
                 </TableRow>
               </TableBody>
             </Table>

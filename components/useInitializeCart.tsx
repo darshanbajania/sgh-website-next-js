@@ -29,6 +29,7 @@ export const useCartInitialize = () => {
           return {
             id: item.productId,
             quantity: item.quantity,
+            ...item.product,
           };
         });
         console.log("🚀 ~ newCartData ~ newCartData:", newCartData);

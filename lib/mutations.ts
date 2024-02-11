@@ -37,16 +37,15 @@ export const UPDATE_PROJECT = gql`
   }
 `;
 export const UPDATE_PRODUCT_QUANTITY = gql`
-  mutation UPDATE_PRODUCT_QUANTITY(
-    $customerId: uuid!
-    $itemId: uuid!
-    $quantity: numeric
-  ) {
-    update_users_cartProduct(
-      where: { productId: { _eq: $itemId }, customerId: { _eq: $customerId } }
-      _set: { quantity: $quantity }
+  mutation UPDATE_PRODUCT_QUNATITY($object: users_cartProduct_insert_input!) {
+    insert_users_cartProduct_one(
+      object: $object
+      on_conflict: {
+        constraint: cartProduct_pkey
+        update_columns: [quantity, isArchived]
+      }
     ) {
-      __typename
+      id
     }
   }
 `;
