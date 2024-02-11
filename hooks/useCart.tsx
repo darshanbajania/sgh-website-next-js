@@ -72,6 +72,11 @@ export const useCart = create((set) => ({
       }
     }
   },
+  intializeCart: async (cartData) => {
+    if (cartData) {
+      set((state) => ({ cart: cartData }));
+    }
+  },
 }));
 // export const useCart = () => {
 //   const cart = JSON.parse(sessionStorage.getItem("cart"));

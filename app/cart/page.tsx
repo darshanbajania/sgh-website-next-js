@@ -2,6 +2,8 @@
 import Button from "@/components/Button";
 import CartProductCard from "@/components/cart/cartProductCard";
 import { useCart } from "@/hooks/useCart";
+import { GET_CART_DATA } from "@/lib/queries";
+import { useQuery } from "@apollo/client";
 import {
   Table,
   TableBody,
@@ -10,8 +12,8 @@ import {
   TableHeader,
   TableRow,
 } from "@nextui-org/react";
-import { SessionProvider } from "next-auth/react";
-import React from "react";
+import { SessionProvider, getSession } from "next-auth/react";
+import React, { useEffect, useState } from "react";
 
 const Cart = () => {
   const { cart } = useCart((state) => state);
@@ -50,7 +52,7 @@ const Cart = () => {
                   <TableCell colSpan={0}></TableCell>
                   <TableCell>150</TableCell>
                 </TableRow>
-                <TableRow key="3">
+                <TableRow key="4">
                   <TableCell></TableCell>
                   <TableCell colSpan={0}></TableCell>
                   <TableCell className="text-lg">150</TableCell>

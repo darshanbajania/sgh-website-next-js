@@ -3,8 +3,10 @@
 import CartIcon from "@/assets/CartIcon";
 import { useCart } from "@/hooks/useCart";
 import React from "react";
+import { useCartInitialize } from "./useInitializeCart";
 
 const CartLink = () => {
+  useCartInitialize();
   const { cart } = useCart((state) => state);
   return (
     <div className="flex items-center justify-center gap-2">

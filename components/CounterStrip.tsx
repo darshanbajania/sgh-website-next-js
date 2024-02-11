@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Button from "./Button";
 import { PlusIcon } from "@/assets/PlusIcon";
 import { MinusIcon } from "@/assets/MinusIcon";
@@ -10,6 +10,10 @@ const CounterStrip = ({
   defaultValue,
 }) => {
   const [quantity, setQuantity] = useState(defaultValue || 0);
+  useEffect(() => {
+    setQuantity(defaultValue || 0);
+  }, [defaultValue]);
+
   const incrementQuantity = () => {
     setQuantity(quantity + 1);
     onIncrementQuantity(quantity + 1);

@@ -124,6 +124,15 @@ export const GET_PRODUCT_DETAILS = gql`
     }
   }
 `;
+export const GET_CART_DATA = gql`
+  query GET_CART_DATA($customerId: uuid!) {
+    users_cartProduct(where: { customerId: { _eq: $customerId } }) {
+      id
+      quantity
+      productId
+    }
+  }
+`;
 
 // export const GET_HOME_PAGE_ADVERTISEMENT = gql`
 //   query GET_HOME_PAGE_ADVERTISEMENT {
