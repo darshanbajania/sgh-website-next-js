@@ -36,3 +36,17 @@ export const UPDATE_PROJECT = gql`
     }
   }
 `;
+export const UPDATE_PRODUCT_QUANTITY = gql`
+  mutation UPDATE_PRODUCT_QUANTITY(
+    $customerId: uuid!
+    $itemId: uuid!
+    $quantity: numeric
+  ) {
+    update_users_cartProduct(
+      where: { productId: { _eq: $itemId }, customerId: { _eq: $customerId } }
+      _set: { quantity: $quantity }
+    ) {
+      __typename
+    }
+  }
+`;

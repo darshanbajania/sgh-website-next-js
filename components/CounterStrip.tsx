@@ -8,6 +8,7 @@ const CounterStrip = ({
   onIncrementQuantity,
   onDecrementQuantity,
   defaultValue,
+  loading,
 }) => {
   const [quantity, setQuantity] = useState(defaultValue || 0);
   useEffect(() => {
@@ -28,6 +29,7 @@ const CounterStrip = ({
     <>
       <div className="flex items-center">
         <Button
+          isDisabled={loading}
           size="sm"
           onClick={incrementQuantity}
           style={{ padding: 0 }}
@@ -38,7 +40,12 @@ const CounterStrip = ({
         <div className="w-6 md:w-10 mx-2">
           <p className="text-xl md:text-2xl text-center">{quantity}</p>
         </div>
-        <Button size="sm" onClick={decrementQuantity} isIconOnly>
+        <Button
+          isDisabled={loading}
+          size="sm"
+          onClick={decrementQuantity}
+          isIconOnly
+        >
           <MinusIcon />
         </Button>
       </div>
