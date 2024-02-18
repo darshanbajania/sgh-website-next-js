@@ -41,19 +41,21 @@ const NavbarComponent = () => {
         />
         <NavbarBrand>
           {/* <AcmeLogo /> */}
-          <p className="font-bold text-inherit">Shree Gokulesh Handicrafts</p>
+          <Link href="/">
+            <p className="font-bold text-inherit">Shree Gokulesh Handicrafts</p>
+          </Link>
         </NavbarBrand>
       </NavbarContent>
 
       <NavbarContent className="hidden sm:flex gap-4" justify="center">
         <NavbarItem>
           <Link color="foreground" href="#">
-            Features
+            About Us
           </Link>
         </NavbarItem>
         <NavbarItem isActive>
           <Link href="#" aria-current="page">
-            Customers
+            Products
           </Link>
         </NavbarItem>
         <NavbarItem>
