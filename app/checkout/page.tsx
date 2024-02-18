@@ -4,13 +4,28 @@ import CheckoutProductCard from "@/components/cart/checkoutProductCard";
 import {
   Divider,
   Input,
+  Modal,
+  ModalBody,
+  ModalContent,
+  ModalFooter,
+  ModalHeader,
   Select,
   SelectItem,
   Textarea,
+  useDisclosure,
 } from "@nextui-org/react";
 import React from "react";
 
 const Checkout = () => {
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  const [backdrop, setBackdrop] = React.useState("opaque");
+
+  const backdrops = ["opaque", "blur", "transparent"];
+
+  const handleOpen = (backdrop) => {
+    setBackdrop(backdrop);
+    onOpen();
+  };
   const citiesData = [
     {
       label: "Mumbai",
@@ -118,9 +133,48 @@ const Checkout = () => {
                 <p className="text-sm">Grand Total</p>
                 <p className="text-xl">₹2500.00</p>
               </div>
-              <Button className="w-full mt-4" size="lg">
+              <Button
+                onClick={() => {
+                  handleOpen("opaque");
+                }}
+                className="w-full mt-4"
+                size="lg"
+              >
                 Place Order
               </Button>
+              <Modal backdrop={backdrop} isOpen={isOpen} onClose={onClose}>
+                <ModalContent>
+                  {(onClose) => (
+                    <>
+                      <ModalHeader className="flex flex-col gap-1 text-black">
+                        Order Placed
+                      </ModalHeader>
+                      <ModalBody className="text-black">
+                        <div className="flex justify-center">
+                          <div style={{ height: 100, width: 100 }}>
+                            <img
+                              src="./correct.png"
+                              height={"100%"}
+                              width={"100%"}
+                            />
+                          </div>
+                        </div>
+                        <p className="mt-4">
+                          Order Placed Successfully. Your Order Id is 123456789
+                        </p>
+                        <p className="text-sm text-center">
+                          A copy of your order will be sent to your email
+                        </p>
+                      </ModalBody>
+                      <ModalFooter>
+                        <Button color="primary" onPress={onClose}>
+                          Got it
+                        </Button>
+                      </ModalFooter>
+                    </>
+                  )}
+                </ModalContent>
+              </Modal>
             </div>
           </div>
         </div>
