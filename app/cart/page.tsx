@@ -13,10 +13,13 @@ import {
   TableRow,
 } from "@nextui-org/react";
 import { SessionProvider, getSession } from "next-auth/react";
+import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
 
 const Cart = () => {
   const { cart } = useCart((state) => state);
+  const router = useRouter();
+
   return (
     <div>
       <SessionProvider>
@@ -63,7 +66,13 @@ const Cart = () => {
               </TableBody>
             </Table>
             <div className="flex justify-center mt-4">
-              <Button>Checkout Now</Button>
+              <Button
+                onPress={() => {
+                  router.push("/checkout");
+                }}
+              >
+                Checkout Now
+              </Button>
             </div>
           </div>
         </div>
