@@ -27,7 +27,7 @@ const CounterStrip = ({
   };
   return (
     <>
-      <div className="flex items-center my-5">
+      <div className="flex items-center">
         <Button
           isDisabled={loading}
           size="sm"
