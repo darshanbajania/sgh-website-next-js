@@ -6,7 +6,13 @@ const Button = ({
   ...props
 }: ButtonProps) => {
   return (
-    <NextUIButton color="primary" variant={variant} {...props}>
+    <NextUIButton
+      size="md"
+      color="primary"
+      variant={variant}
+      {...props}
+      radius="sm"
+    >
       {children}
     </NextUIButton>
   );

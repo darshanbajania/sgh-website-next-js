@@ -27,7 +27,7 @@ const CounterStrip = ({
   };
   return (
     <>
-      <div className="flex items-center">
+      <div className="flex items-center my-5">
         <Button
           isDisabled={loading}
           size="sm"
@@ -38,7 +38,7 @@ const CounterStrip = ({
           <PlusIcon />
         </Button>
         <div className="w-6 md:w-10 mx-2">
-          <p className="text-xl md:text-2xl text-center">{quantity}</p>
+          <p className="text-l md:text-xl text-center">{quantity}</p>
         </div>
         <Button
           isDisabled={loading}
