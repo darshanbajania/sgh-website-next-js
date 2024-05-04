@@ -24,7 +24,7 @@ export default function RootLayout({
           <Providers>
             <main className="light text-foreground bg-background">
               <Navbar />
-              {children}
+              <div className="max-w-[1440px] px-2 m-auto">{children}</div>
               <Footer />
             </main>
           </Providers>

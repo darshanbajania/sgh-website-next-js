@@ -12,11 +12,11 @@ const ProductCard = ({ item }: { label: string; price: number }) => {
   return (
     <div
       onClick={handleOnPress}
-      className="max-w-sm rounded overflow-hidden shadow-lg cursor-pointer"
+      className="w-[15rem] rounded overflow-hidden shadow-md cursor-pointer"
     >
-      <div className="w-80 h-80 flex items-center justify-center bg-gray-100 p-4">
+      <div className="w-full h-[8rem]   flex items-center justify-center bg-gray-50 p-2">
         <img
-          className=" object-contain "
+          className=" object-contain w-full h-full "
           src={
             item.productImages[0]?.image ||
             "https://psediting.websites.co.in/obaju-turquoise/img/product-placeholder.png"

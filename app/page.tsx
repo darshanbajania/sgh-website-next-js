@@ -19,12 +19,12 @@ const Home = async () => {
   });
 
   return (
-    <div>
+    <div className="">
       <Caraousel carouselData={data?.sales_advertisement} />
       <HomeProductCategoryHeader />
 
       {/* Cards Row */}
-      <div className="flex flex-wrap justify-start gap-4 p-4">
+      <div className="flex  gap-4 mb-5 overflow-x-auto py-5 px-2">
         {data?.products_product?.map((item) => {
           return <ProductCard key={item.id} item={item} />;
         })}
