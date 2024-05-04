@@ -29,6 +29,16 @@ const Checkout = () => {
     state: "",
     pinCode: "",
   });
+  const [isShippingDataValid, setIsShippingDataValid] = useState({
+    fullName: true,
+    email: true,
+    phoneNumber: true,
+    addressLine1: true,
+    addressLine2: true,
+    city: true,
+    state: true,
+    pinCode: true,
+  });
   const isDataValid = (fieldValue, fieldType) => {
     switch (fieldType) {
       case "name":
@@ -94,6 +104,10 @@ const Checkout = () => {
               <div className="flex w-full flex-wrap md:flex-nowrap gap-4 my-4">
                 <Input
                   isRequired
+                  variant="bordered"
+                  radius="sm"
+                  labelPlacement="outside"
+                  size="sm"
                   type="text"
                   label="Full Name"
                   placeholder="Your Name"
@@ -105,9 +119,9 @@ const Checkout = () => {
                       fullName: value,
                     }));
                   }}
-                  isInvalid={!isDataValid(shippingAddress.fullName, "name")}
+                  isInvalid={!isShippingDataValid.fullName}
                   errorMessage={
-                    !isDataValid(shippingAddress.fullName, "name")
+                    !isShippingDataValid.fullName
                       ? "Please enter a valid name"
                       : null
                   }
@@ -116,6 +130,10 @@ const Checkout = () => {
                   isRequired
                   type="email"
                   label="Email"
+                  size="sm"
+                  variant="bordered"
+                  radius="sm"
+                  labelPlacement="outside"
                   placeholder="junior@nextui.org"
                   defaultValue={shippingAddress.email}
                   value={shippingAddress.email}
@@ -125,77 +143,93 @@ const Checkout = () => {
                       email: value,
                     }));
                   }}
-                  isInvalid={!isDataValid(shippingAddress.email, "email")}
+                  isInvalid={!isShippingDataValid.email}
                   errorMessage={
-                    !isDataValid(shippingAddress.email, "email")
+                    !isShippingDataValid.email
                       ? "Please enter a valid email"
                       : null
                   }
                 />
+                <Input
+                  isRequired
+                  type="phone"
+                  label="Phone Number"
+                  size="sm"
+                  labelPlacement="outside"
+                  variant="bordered"
+                  radius="sm"
+                  placeholder="XXXXXXXXXXX"
+                  className=""
+                  defaultValue={shippingAddress.phoneNumber}
+                  value={shippingAddress.phoneNumber}
+                  onValueChange={(value) => {
+                    setShippingAddress((prev) => ({
+                      ...prev,
+                      phoneNumber: value,
+                    }));
+                  }}
+                  isInvalid={!isShippingDataValid.phoneNumber}
+                  errorMessage={
+                    !isShippingDataValid.phoneNumber
+                      ? "Please enter a valid phone"
+                      : null
+                  }
+                />
               </div>
-              <Input
-                isRequired
-                type="phone"
-                label="Phone Number"
-                placeholder="XXXXXXXXXXX"
-                className="my-4 w-full md:w-1/2"
-                defaultValue={shippingAddress.phoneNumber}
-                value={shippingAddress.phoneNumber}
-                onValueChange={(value) => {
-                  setShippingAddress((prev) => ({
-                    ...prev,
-                    phoneNumber: value,
-                  }));
-                }}
-                isInvalid={!isDataValid(shippingAddress.phoneNumber, "phone")}
-                errorMessage={
-                  !isDataValid(shippingAddress.phoneNumber, "phone")
-                    ? "Please enter a valid phone"
-                    : null
-                }
-              />
-              <Input
-                isRequired
-                type="text"
-                label="Address Line 1"
-                placeholder=""
-                className="my-4"
-                defaultValue={shippingAddress.addressLine1}
-                value={shippingAddress.addressLine1}
-                onValueChange={(value) => {
-                  setShippingAddress((prev) => ({
-                    ...prev,
-                    addressLine1: value,
-                  }));
-                }}
-                isInvalid={
-                  !isDataValid(shippingAddress.addressLine1, "address")
-                }
-                errorMessage={
-                  !isDataValid(shippingAddress.addressLine1, "address")
-                    ? "Please enter a valid address"
-                    : null
-                }
-              />
-              <Input
-                type="text"
-                label="Address Line 2"
-                placeholder=""
-                className="my-4"
-                defaultValue={shippingAddress.addressLine2}
-                value={shippingAddress.addressLine2}
-                onValueChange={(value) => {
-                  setShippingAddress((prev) => ({
-                    ...prev,
-                    addressLine2: value,
-                  }));
-                }}
-              />
+              <div className="pt-2 flex flex-wrap gap-x-4">
+                <Input
+                  isRequired
+                  type="text"
+                  label="Address Line 1"
+                  labelPlacement="outside"
+                  variant="bordered"
+                  radius="sm"
+                  size="sm"
+                  placeholder="sada"
+                  className="mt-4 pb-4 md:w-[40%]"
+                  defaultValue={shippingAddress.addressLine1}
+                  value={shippingAddress.addressLine1}
+                  onValueChange={(value) => {
+                    setShippingAddress((prev) => ({
+                      ...prev,
+                      addressLine1: value,
+                    }));
+                  }}
+                  isInvalid={!isShippingDataValid.addressLine1}
+                  errorMessage={
+                    !isShippingDataValid.addressLine1
+                      ? "Please enter a valid address"
+                      : null
+                  }
+                />
+                <Input
+                  type="text"
+                  label="Address Line 2"
+                  labelPlacement="outside"
+                  placeholder=""
+                  variant="bordered"
+                  radius="sm"
+                  size="sm"
+                  className="my-4 md:w-[40%]"
+                  defaultValue={shippingAddress.addressLine2}
+                  value={shippingAddress.addressLine2}
+                  onValueChange={(value) => {
+                    setShippingAddress((prev) => ({
+                      ...prev,
+                      addressLine2: value,
+                    }));
+                  }}
+                />
+              </div>
               <div className="flex w-full flex-wrap md:flex-nowrap gap-4 mb-4">
                 <Input
                   isRequired
                   type="text"
                   label="City"
+                  labelPlacement="outside"
+                  variant="bordered"
+                  radius="sm"
+                  size="sm"
                   placeholder="Ahmedabad"
                   className="max-w-xs"
                   defaultValue={shippingAddress.city}
@@ -206,9 +240,9 @@ const Checkout = () => {
                       city: value,
                     }));
                   }}
-                  isInvalid={!isDataValid(shippingAddress.city, "text")}
+                  isInvalid={!isShippingDataValid.city}
                   errorMessage={
-                    !isDataValid(shippingAddress.city, "text")
+                    !isShippingDataValid.city
                       ? "Please enter a valid city"
                       : null
                   }
@@ -217,6 +251,10 @@ const Checkout = () => {
                   isRequired
                   type="phone"
                   label="State"
+                  variant="bordered"
+                  radius="sm"
+                  size="sm"
+                  labelPlacement="outside"
                   placeholder="Gujarat"
                   className="max-w-xs"
                   defaultValue={shippingAddress.state}
@@ -227,36 +265,38 @@ const Checkout = () => {
                       state: value,
                     }));
                   }}
-                  isInvalid={!isDataValid(shippingAddress.email, "text")}
+                  isInvalid={!isShippingDataValid.state}
                   errorMessage={
-                    !isDataValid(shippingAddress.email, "text")
+                    !isShippingDataValid.state
                       ? "Please enter a valid state"
                       : null
                   }
                 />
+                <Input
+                  isRequired
+                  type="text"
+                  label="Pincode"
+                  placeholder="xxxxxx"
+                  labelPlacement="outside"
+                  variant="bordered"
+                  radius="sm"
+                  size="sm"
+                  defaultValue={shippingAddress.pinCode}
+                  value={shippingAddress.pinCode}
+                  onValueChange={(value) => {
+                    setShippingAddress((prev) => ({
+                      ...prev,
+                      pinCode: value,
+                    }));
+                  }}
+                  isInvalid={!isShippingDataValid.pinCode}
+                  errorMessage={
+                    !isShippingDataValid.pinCode
+                      ? "Please enter a valid pinCode"
+                      : null
+                  }
+                />
               </div>
-
-              <Input
-                isRequired
-                type="text"
-                label="Pincode"
-                placeholder="xxxxxx"
-                className="max-w-xs"
-                defaultValue={shippingAddress.pinCode}
-                value={shippingAddress.pinCode}
-                onValueChange={(value) => {
-                  setShippingAddress((prev) => ({
-                    ...prev,
-                    pinCode: value,
-                  }));
-                }}
-                isInvalid={!isDataValid(shippingAddress.pinCode, "pin-code")}
-                errorMessage={
-                  !isDataValid(shippingAddress.pinCode, "pin-code")
-                    ? "Please enter a valid pinCode"
-                    : null
-                }
-              />
             </div>
             <div className="p-4 rounded-lg border-1 mt-4">
               <h3>Payment Details</h3>
