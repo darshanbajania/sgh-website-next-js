@@ -5,6 +5,7 @@ import { Providers } from "./providers";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { ApolloWrapper } from "@/lib/apollo-wrapper";
+import { getServerSession } from "next-auth";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -12,16 +13,18 @@ export const metadata: Metadata = {
   description: "Your one stop solution for wagha",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const session = await getServerSession();
+
   return (
     <html lang="en">
       <body>
         <ApolloWrapper>
-          <Providers>
+          <Providers session={session}>
             <main className="light text-foreground bg-background">
               <Navbar />
               <div className="max-w-[1440px] px-2 m-auto">{children}</div>
