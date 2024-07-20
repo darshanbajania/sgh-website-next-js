@@ -1,6 +1,6 @@
 "use client";
 import Button from "@/components/Button";
-import CartProductCard from "@/components/cart/cartProductCard";
+import CartProductCard from "@/components/cart/CartProductCard";
 import { useCart } from "@/hooks/useCart";
 import { GET_CART_DATA } from "@/lib/queries";
 import { useQuery } from "@apollo/client";
@@ -12,6 +12,7 @@ import {
   TableHeader,
   TableRow,
 } from "@nextui-org/react";
+import { useSession } from "next-auth/react";
 
 import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
@@ -19,7 +20,21 @@ import React, { useEffect, useState } from "react";
 const Cart = () => {
   const { cart } = useCart((state) => state);
   const router = useRouter();
-
+  const sessionData = useSession();
+  console.log("session data", sessionData);
+  const {
+    data,
+    loading: cartDataLoading,
+    error,
+  } = useQuery(GET_CART_DATA, {
+    variables: {
+      customerId: sessionData.data?.user.id,
+    },
+    skip: !sessionData,
+    onCompleted: (data) => {},
+  });
+  console.log("cardata", data?.users_cartProduct);
+  const cartData = data?.users_cartProduct ? data?.users_cartProduct : [];
   return (
     <div>
       <div>
@@ -28,8 +43,18 @@ const Cart = () => {
       <div className=" flex flex-wrap justify-between">
         {/* Column 1 */}
         <div className="w-full md:w-[30%] p-4">
-          {cart.map((item, index) => {
-            return <CartProductCard key={index} item={item} />;
+          {cartData.map((item, index) => {
+            return (
+              <CartProductCard
+                key={index}
+                item={item}
+                cartProductId={item.id}
+                label={item.product.label}
+                description={item.product.description}
+                price={item.product.price}
+                quantity={item.quantity}
+              />
+            );
           })}
         </div>
         {/* Column 2 */}
